@@ -69,28 +69,33 @@ window.onkeyup = keyup;
 function keyup(e) {
     //Reading the input text
     inputTextValue = e.target.value;
-  
-    //Type '/' to start matching the following input to the list 
-    if (e.keyCode == 191) {
-        position = inputTextValue.length;
-        toCheck = 1;
-        dropdownPos = 0;
-    };
+    position = inputTextValue.length;
+    var limit = position - 5;
 
     //Press backspace
     if (e.keyCode == 8){
-        toCheck -= 2;
         dropdownPos = 0;
     };    
     
-    //After '/' is typed
-    if (toCheck > 0){
+    //After something is typed
+    if (position > 0){
+        if (limit < 0){
+            limit = 0;
+        }
         $(".dropdown-content")[0].setAttribute("style","display:inline-block;");
-        checkString = inputTextValue.substr(position,position+toCheck);
-        toBeReplaced = "/" + checkString;
         
-        resOfLookUp = stringLookup(checkString);
+        while (limit < position){
+            checkString = inputTextValue.substr(limit,position);
+            resOfLookUp = stringLookup(checkString);
+            if (resOfLookUp.length == 0){
+                limit += 1;
+            }else{
+                limit = position;
+            };
+        };
+        
         numOfChoices = resOfLookUp.length
+        toBeReplaced = checkString;
         
         if (dropdownPos > (numOfChoices - 1)){
             dropdownPos = 0;
@@ -102,10 +107,9 @@ function keyup(e) {
             toReplaceWith = "";
             $(".dropdown-content").text(toReplaceWith);
         }else{
-            var displayString = toReplaceWith + " (" + (dropdownPos+1) + " of " + numOfChoices + ")";
+            var displayString = toReplaceWith + " (" + (dropdownPos+1) + " of " + numOfChoices + " characters start with " + '"' + checkString + '"' + ")";
             $(".dropdown-content").text(displayString);
         }
-        toCheck += 1;
     };
     
     //Press enter
@@ -114,16 +118,17 @@ function keyup(e) {
         e.target.value = inputTextValue;
         $(".dropdown-content")[0].setAttribute("style","display:none;");
         $("searchTxt").focus;
-        toCheck = 0;
         dropdownPos = 0;
     };
   
     //When the post-'/' string gets too long don't bother with further lookup
     if (toCheck > 8){
         $(".dropdown-content")[0].setAttribute("style","display:none;");
-        toCheck = 0;
         dropdownPos = 0;
     };
+    
+    inputTextValue = e.target.value;
+    position = inputTextValue.length;
 };
 
 //Check if the typed string has any match in the list of pronunciations
@@ -144,23 +149,21 @@ function stringLookup(inputString){
 //Handle up and down key presses to iterate through choices
 window.onkeydown = keydown;
 function keydown(e){
-      //Press up arrow
+    //Press up arrow
     if (e.keyCode == 38){
-        toCheck -= 1;
         if (dropdownPos > 0){
             dropdownPos -= 1; 
         }else if (dropdownPos == 0){
             dropdownPos = numOfChoices - 1;
         };
     };
-
+    
     //Press down arrow
     if (e.keyCode == 40){
-        toCheck -= 1;
         if (dropdownPos < (numOfChoices - 1)){
             dropdownPos += 1;      
         }else if (dropdownPos == (numOfChoices - 1)){
             dropdownPos = 0;
         };
-    };
+    }; 
 };
