@@ -56,7 +56,6 @@ tool = tool.concat(punctuationt);
 
 //Initialise variables
 var inputTextValue;             //contains text in the input field
-var toCheck = 0;                //determines when to check for string matches
 var position;                   //character position in input field immediately after '/'
 var checkString;                //pulls string from input text to be checked for matches
 var toBeReplaced;               //text string to be replaced in input field
@@ -118,12 +117,6 @@ function keyup(e) {
         e.target.value = inputTextValue;
         $(".dropdown-content")[0].setAttribute("style","display:none;");
         $("searchTxt").focus;
-        dropdownPos = 0;
-    };
-  
-    //When the post-'/' string gets too long don't bother with further lookup
-    if (toCheck > 8){
-        $(".dropdown-content")[0].setAttribute("style","display:none;");
         dropdownPos = 0;
     };
     
