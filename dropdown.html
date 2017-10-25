@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Dropdown character selector</title>
+        <link rel = "stylesheet" type = "text/css" href = "dropdown/styles/main.css">        
+        <script src="dropdown/scripts/jquery-3.2.1.min.js"></script>
+    </head>
+
+    <body>
+        <div class="content">
+            <h1>Dropdown character selector</h1>
+            <p>After much anticipation, Duolingo <a href="https://www.duolingo.com/comment/24786078">recently released their Japanese 
+            beta course to desktop users</a> following a redesign of their website to 
+            be more consistent with their mobile app. 
+            <br><br>This was met with mixed reviews since the redesign bought in the 
+            somewhat unpopular tile selection exercises where the user is asked to translate
+            a phrase and are given a limited set of words to choose from in order to do so.
+            <br><br>I don't particularly mind it but I understand why it's unpopular 
+            (offers the user less motivation/opportunity to recall) and also why the
+            people behind Duolingo may have gone down this route (better parity with their
+            mobile app means, in future, courses can be made for one and work for both. 
+            Also, I suspect they may anticipate that some people could be put off/otherwise hindered
+            by the 'entry requirement' of having to download the target language keyboard)
+            <br><br>Here I have a simple demo of a possible solution to the latter issue [<a href="https://github.com/Fox-Islam/dropdown-selector">Github link</a>].
+            <br><br>While I've opted, in this case, to use a forward slash, /, to 'enable' the selector 
+            for each character, to modify this such that a preceding character is unnecessary would be 
+            a simple exercise</p>
+        </div>
+        <div class="use">
+            <h2>How to use this thing</h2>
+            <p>In this example, type the forward slash character, '/' followed by the pronunciation of 
+            a Japanese character (for example, 'tsu') into the input field and can select from a list 
+            of matching Japanese characters (for 'tsu' the options would be ツ, ッ, つ, っ) by using 
+            the up/down arrow keys, pressing enter once you find what you're looking for.
+            <br>To access つ one may type '/tsu' or just '/ts' followed by two presses of the 
+            down arrow key or even '/t' followed by six presses of the down arrow key and then press enter.
+            </p>
+            <div class="dropdown">
+                <input id="searchTxt" placeholder="Start each new character with /, use up and down arrows to navigate and press enter to select">
+                <div class="dropdown-content">
+                    
+                </div>
+            </div>
+            <div>
+                <p>With the exception of ッ, っ, and ー (which, here, are accessed with '/tsu','/tsu' and '/-' respectively)
+                all the pronunciation pairs can be found on my <a href="tooltips.html">character tooltips page</a>. </p>
+                <p> Additionally there are a variety of available punctuation characters: </p>
+                <div class="beforeTable"><p></p></div>
+                <table>
+                    <tr>
+                        <th>Character</th>
+                        <th>Type '/' and </th>
+                    </tr>
+                    <tr>
+                        <td>、</td>
+                        <td>,</td>
+                    </tr>
+                    <tr>
+                        <td>。</td>
+                        <td>.</td>
+                    </tr>
+                    <tr>
+                        <td>…</td>
+                        <td>...</td>
+                    </tr>
+                    <tr>
+                        <td>・</td>
+                        <td> (space)</td>
+                    </tr>
+                    <tr>
+                        <td>〜</td>
+                        <td>~</td>
+                    </tr>
+                    <tr>
+                        <td>：</td>
+                        <td>:</td>
+                    </tr>
+                    <tr>
+                        <td>！</td>
+                        <td>!</td>
+                    </tr>
+                    <tr>
+                        <td>？</td>
+                        <td>?</td>
+                    </tr>
+                    <tr>
+                        <td>♪</td>
+                        <td>note</td>
+                    </tr>
+                    <tr>
+                        <td>【</td>
+                        <td>ll</td>
+                    </tr>
+                    <tr>
+                        <td>】</td>
+                        <td>lr</td>
+                    </tr>
+                    <tr>
+                        <td>［</td>
+                        <td>sl</td>
+                    </tr>
+                    <tr>
+                        <td>］</td>
+                        <td>sr</td>
+                    </tr>
+                    <tr>
+                        <td>（</td>
+                        <td>pl</td>
+                    </tr>
+                    <tr>
+                        <td>）</td>
+                        <td>pr</td>
+                    </tr>
+                    <tr>
+                        <td>｛</td>
+                        <td>cl</td>
+                    </tr>
+                    <tr>
+                        <td>｝</td>
+                        <td>cr</td>
+                    </tr>
+                    <tr>
+                        <td>ー</td>
+                        <td>-</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <script src="dropdown/scripts/main.js"></script>
+    </body>
+</html>
